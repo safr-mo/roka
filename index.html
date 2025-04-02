@@ -3,144 +3,309 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROKA SHOP - شحن ألعاب</title>
+    <title>ROKA SHOP - متجر شحن الألعاب</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+        :root {
+            --primary-color: #6C5CE7;
+            --secondary-color: #A29BFE;
+            --accent-color: #FD79A8;
+            --dark-color: #2D3436;
+            --light-color: #F5F6FA;
+            --success-color: #00B894;
+            --whatsapp-color: #25D366;
+        }
+        
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            color: #333;
         }
+        
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+        
+        /* Header Styles */
         header {
-            background-color: #25D366;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 20px 0;
+            padding: 30px 0;
             text-align: center;
-            border-radius: 10px 10px 0 0;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+            position: relative;
+            overflow: hidden;
         }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
         h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 2.5rem;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .whatsapp-btn {
+        
+        .header-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        /* Button Styles */
+        .btn {
             display: inline-block;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            margin: 5px 0;
+            padding: 12px 25px;
+            border-radius: 50px;
             font-weight: bold;
-            transition: background-color 0.3s;
-            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
         }
-        .whatsapp-btn:hover {
+        
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+            color: white;
+            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
             background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
         }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5649C0;
+            transform: translateY(-2px);
+        }
+        
+        /* Price Section Styles */
         .price-section {
             background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        .price-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
         .price-section h2 {
-            color: #25D366;
-            border-bottom: 2px solid #25D366;
-            padding-bottom: 10px;
-            margin-top: 0;
+            color: var(--primary-color);
+            border-bottom: 2px dashed var(--secondary-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
         }
+        
+        .price-section h2::before {
+            content: '🎮';
+            margin-left: 10px;
+        }
+        
         .price-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            border-right: 3px solid #25D366;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px;
+            margin-bottom: 12px;
+            background-color: var(--light-color);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-right: 4px solid var(--primary-color);
         }
-        .price-item:nth-child(even) {
-            background-color: #f0f0f0;
+        
+        .price-item:hover {
+            background-color: #e6e6e6;
+            transform: translateX(5px);
         }
+        
         .item-info {
             flex-grow: 1;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
+        
+        .item-info span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
         .item-action {
-            margin-left: 10px;
+            margin-right: 10px;
         }
+        
+        .btn-sm {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Notes Styles */
         .note {
             font-style: italic;
             color: #666;
             text-align: center;
             margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(0,0,0,0.03);
+            border-radius: 5px;
         }
+        
+        /* Footer Styles */
         footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #333;
+            margin-top: 50px;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--dark-color), #1a1a1a);
             color: white;
-            border-radius: 0 0 10px 10px;
+            border-radius: 15px;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
         }
+        
+        footer p {
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1rem;
+            }
+            
+            .price-section {
+                padding: 15px;
+            }
+            
+            .price-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .item-action {
+                margin: 10px 0 0;
+                width: 100%;
+            }
+            
+            .btn-sm {
+                width: 100%;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .price-section {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .price-section:nth-child(2) { animation-delay: 0.1s; }
+        .price-section:nth-child(3) { animation-delay: 0.2s; }
+        .price-section:nth-child(4) { animation-delay: 0.3s; }
+        .price-section:nth-child(5) { animation-delay: 0.4s; }
+        .price-section:nth-child(6) { animation-delay: 0.5s; }
+        .price-section:nth-child(7) { animation-delay: 0.6s; }
+        .price-section:nth-child(8) { animation-delay: 0.7s; }
+        .price-section:nth-child(9) { animation-delay: 0.8s; }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>ROKA SHOP - متجر شحن الألعاب</h1>
-            <a href="https://wa.me/201102338477" class="whatsapp-btn">تواصل معنا عبر واتساب</a>
+            <h1>ROKA SHOP</h1>
+            <p class="header-subtitle">متجر شحن الألعاب والعملات الرقمية</p>
+            <a href="https://wa.me/201102338477" class="btn btn-whatsapp">تواصل معنا عبر واتساب</a>
         </header>
 
         <div class="price-section">
             <h2>أسعار جواهر فري فاير حساب</h2>
             <div class="price-item">
-                <div class="item-info">💎100 = 55 ج</div>
+                <div class="item-info">💎 <span>100</span> = 55 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎100_ب_55_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎100_ب_55_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎310 = 125ج</div>
+                <div class="item-info">💎 <span>310</span> = 125ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎310_ب_125_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎310_ب_125_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎520 = 200 ج</div>
+                <div class="item-info">💎 <span>520</span> = 200 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎520_ب_200_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎520_ب_200_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎 1060=375 ج</div>
+                <div class="item-info">💎 <span>1060</span> = 375 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎1060_ب_375_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎1060_ب_375_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎2180 = 750 ج</div>
+                <div class="item-info">💎 <span>2180</span> = 750 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎2180_ب_750_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎2180_ب_750_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎5600= 2000ج</div>
+                <div class="item-info">💎 <span>5600</span> = 2000ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎5600_ب_2000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎5600_ب_2000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎11200= 4000ج</div>
+                <div class="item-info">💎 <span>11200</span> = 4000ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎11200_ب_4000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎11200_ب_4000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
         </div>
@@ -148,39 +313,39 @@
         <div class="price-section">
             <h2>أسعار جواهر فري فاير iD</h2>
             <div class="price-item">
-                <div class="item-info">💎110= 55 ج</div>
+                <div class="item-info">💎 <span>110</span> = 55 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎110_ب_55_ج_للآي_دي" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎110_ب_55_ج_للآي_دي" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎340 = 145 ج</div>
+                <div class="item-info">💎 <span>340</span> = 145 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎340_ب_145_ج_للآي_دي" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎340_ب_145_ج_للآي_دي" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎572 = 250 ج</div>
+                <div class="item-info">💎 <span>572</span> = 250 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎572_ب_250_ج_للآي_دي" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎572_ب_250_ج_للآي_دي" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎 1032=400 ج</div>
+                <div class="item-info">💎 <span>1032</span> = 400 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎1032_ب_400_ج_للآي_دي" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎1032_ب_400_ج_للآي_دي" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎2064= 800 ج</div>
+                <div class="item-info">💎 <span>2064</span> = 800 ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎2064_ب_800_ج_للآي_دي" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎2064_ب_800_ج_للآي_دي" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">💎5000=1950ج</div>
+                <div class="item-info">💎 <span>5000</span> = 1950ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎5000_ب_1950_ج_للآي_دي" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_💎5000_ب_1950_ج_للآي_دي" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
         </div>
@@ -188,52 +353,52 @@
         <div class="price-section">
             <h2>أسعار عضويات فري فاير</h2>
             <div class="price-item">
-                <div class="item-info">1 عضويه اسبوعيه = 80 ج</div>
+                <div class="item-info">1 عضويه اسبوعيه = <span>80</span> ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1_عضوية_أسبوعية_ب_80_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1_عضوية_أسبوعية_ب_80_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">٢ عضويه أسبوعيه = 160ج</div>
+                <div class="item-info">٢ عضويه أسبوعيه = <span>160</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_2_عضوية_أسبوعية_ب_160_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_2_عضوية_أسبوعية_ب_160_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">٣ عضويه اسبوعيه= 240ج</div>
+                <div class="item-info">٣ عضويه اسبوعيه= <span>240</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_3_عضوية_أسبوعية_ب_240_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_3_عضوية_أسبوعية_ب_240_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">٤ عضويه اسبوعيه = 320ج</div>
+                <div class="item-info">٤ عضويه اسبوعيه = <span>320</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_4_عضوية_أسبوعية_ب_320_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_4_عضوية_أسبوعية_ب_320_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">شهري + أسبوعي+ 600💎 اكونت = 380ج</div>
+                <div class="item-info">شهري + أسبوعي+ 600💎 اكونت = <span>380</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_شهري_+_أسبوعي_+_600💎_اكونت_ب_380_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_شهري_+_أسبوعي_+_600💎_اكونت_ب_380_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
-            <h3 style="margin-top: 15px;">عضويات بالايدي</h3>
+            <h3 style="margin-top: 15px; color: var(--primary-color);">عضويات بالايدي</h3>
             <div class="price-item">
-                <div class="item-info">شهري+500💎=300ج</div>
+                <div class="item-info">شهري+500💎= <span>300</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_عضوية_شهرية_+_500💎_للآي_دي_ب_300_ج" class="whatsapp-btn">اطلب الآن</a>
-                </div>
-            </div>
-            <div class="price-item">
-                <div class="item-info">اسبوعي+100💎=100ج</div>
-                <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_عضوية_أسبوعية_+_100💎_للآي_دي_ب_100_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_عضوية_شهرية_+_500💎_للآي_دي_ب_300_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">شهري + أسبوعي +600 💎 ايدي= 400ج</div>
+                <div class="item-info">اسبوعي+100💎= <span>100</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_شهري_+_أسبوعي_+_600💎_للآي_دي_ب_400_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_عضوية_أسبوعية_+_100💎_للآي_دي_ب_100_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
+                </div>
+            </div>
+            <div class="price-item">
+                <div class="item-info">شهري + أسبوعي +600 💎 ايدي= <span>400</span>ج</div>
+                <div class="item-action">
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_شهري_+_أسبوعي_+_600💎_للآي_دي_ب_400_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
         </div>
@@ -241,28 +406,28 @@
         <div class="price-section">
             <h2>أسعار دروبات فري فاير</h2>
             <div class="price-item">
-                <div class="item-info">دروب ١$ = 50 ج</div>
+                <div class="item-info">دروب ١$ = <span>50</span> ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_دروب_1$_ب_50_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_دروب_1$_ب_50_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">دروب ٢$ = 100 ج</div>
+                <div class="item-info">دروب ٢$ = <span>100</span> ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_دروب_2$_ب_100_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_دروب_2$_ب_100_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
-            <h3 style="margin-top: 15px;">اسعار مستوي</h3>
+            <h3 style="margin-top: 15px; color: var(--primary-color);">اسعار مستوي</h3>
             <div class="price-item">
-                <div class="item-info">مستوي بالايدي = 65ج</div>
+                <div class="item-info">مستوي بالايدي = <span>65</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_مستوى_بالآي_دي_ب_65_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_مستوى_بالآي_دي_ب_65_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">مستوي بالحساب=55ج</div>
+                <div class="item-info">مستوي بالحساب= <span>55</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_مستوى_بالحساب_ب_55_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_مستوى_بالحساب_ب_55_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
         </div>
@@ -270,51 +435,51 @@
         <div class="price-section">
             <h2>شحن ببجـى العالـميه اكونت ☑</h2>
             <div class="price-item">
-                <div class="item-info">60 شده = 55ج</div>
+                <div class="item-info">60 شده = <span>55</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_60_شدة_ببجي_اكونت_ب_55_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_60_شدة_ببجي_اكونت_ب_55_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">325شده= 200ج</div>
+                <div class="item-info">325شده= <span>200</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_325_شدة_ببجي_اكونت_ب_200_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_325_شدة_ببجي_اكونت_ب_200_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">660شده= 400ج</div>
+                <div class="item-info">660شده= <span>400</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_660_شدة_ببجي_اكونت_ب_400_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_660_شدة_ببجي_اكونت_ب_400_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">975 شده = 600 ج</div>
+                <div class="item-info">975 شده = <span>600</span> ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_975_شدة_ببجي_اكونت_ب_600_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_975_شدة_ببجي_اكونت_ب_600_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">1300شده = 780ج</div>
+                <div class="item-info">1300شده = <span>780</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1300_شدة_ببجي_اكونت_ب_780_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1300_شدة_ببجي_اكونت_ب_780_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">1800 شده = 1000ج</div>
+                <div class="item-info">1800 شده = <span>1000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1800_شدة_ببجي_اكونت_ب_1000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1800_شدة_ببجي_اكونت_ب_1000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">3850 شده = 2000ج</div>
+                <div class="item-info">3850 شده = <span>2000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_3850_شدة_ببجي_اكونت_ب_2000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_3850_شدة_ببجي_اكونت_ب_2000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">8100 شده = 4000ج</div>
+                <div class="item-info">8100 شده = <span>4000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_8100_شدة_ببجي_اكونت_ب_4000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_8100_شدة_ببجي_اكونت_ب_4000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="note">الشحن بياخد وقت</div>
@@ -323,45 +488,45 @@
         <div class="price-section">
             <h2>شحن ببجـى العالـميه ID ☑</h2>
             <div class="price-item">
-                <div class="item-info">60 شده = 55ج</div>
+                <div class="item-info">60 شده = <span>55</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_60_شدة_ببجي_آي_دي_ب_55_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_60_شدة_ببجي_آي_دي_ب_55_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">355شده = 280ج</div>
+                <div class="item-info">355شده = <span>280</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_355_شدة_ببجي_آي_دي_ب_280_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_355_شدة_ببجي_آي_دي_ب_280_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">720شده = 520ج</div>
+                <div class="item-info">720شده = <span>520</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_720_شدة_ببجي_آي_دي_ب_520_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_720_شدة_ببجي_آي_دي_ب_520_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">975 شده= 730ج</div>
+                <div class="item-info">975 شده= <span>730</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_975_شدة_ببجي_آي_دي_ب_730_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_975_شدة_ببجي_آي_دي_ب_730_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">1800شده = 1300 ج</div>
+                <div class="item-info">1800شده = <span>1300</span> ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1800_شدة_ببجي_آي_دي_ب_1300_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1800_شدة_ببجي_آي_دي_ب_1300_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">3850شده = 2300ج</div>
+                <div class="item-info">3850شده = <span>2300</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_3850_شدة_ببجي_آي_دي_ب_2300_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_3850_شدة_ببجي_آي_دي_ب_2300_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">8100شده = 4500ج</div>
+                <div class="item-info">8100شده = <span>4500</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_8100_شدة_ببجي_آي_دي_ب_4500_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_8100_شدة_ببجي_آي_دي_ب_4500_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
         </div>
@@ -369,39 +534,39 @@
         <div class="price-section">
             <h2>اسعار لعبة روبلوكس</h2>
             <div class="price-item">
-                <div class="item-info">400 🪙= 230ج</div>
+                <div class="item-info">400 🪙= <span>230</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_400_روبوكس_ب_230_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_400_روبوكس_ب_230_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">800 🪙= 460ج</div>
+                <div class="item-info">800 🪙= <span>460</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_800_روبوكس_ب_460_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_800_روبوكس_ب_460_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">1600🪙= 900ج</div>
+                <div class="item-info">1600🪙= <span>900</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1600_روبوكس_ب_900_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1600_روبوكس_ب_900_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">2000🪙=1150ج</div>
+                <div class="item-info">2000🪙= <span>1150</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_2000_روبوكس_ب_1150_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_2000_روبوكس_ب_1150_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">4000🪙=2200ج</div>
+                <div class="item-info">4000🪙= <span>2200</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_4000_روبوكس_ب_2200_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_4000_روبوكس_ب_2200_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">8000🪙=4400ج</div>
+                <div class="item-info">8000🪙= <span>4400</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_8000_روبوكس_ب_4400_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_8000_روبوكس_ب_4400_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="note">الشحن بياخد وقت</div>
@@ -410,33 +575,33 @@
         <div class="price-section">
             <h2>اسعار بيس e_Football2024</h2>
             <div class="price-item">
-                <div class="item-info">1040🪙 = 400ج</div>
+                <div class="item-info">1040🪙 = <span>400</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1040_عملة_بيس_2024_ب_400_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1040_عملة_بيس_2024_ب_400_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">2130🪙 = 800ج</div>
+                <div class="item-info">2130🪙 = <span>800</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_2130_عملة_بيس_2024_ب_800_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_2130_عملة_بيس_2024_ب_800_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">3250🪙=1200ج</div>
+                <div class="item-info">3250🪙= <span>1200</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_3250_عملة_بيس_2024_ب_1200_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_3250_عملة_بيس_2024_ب_1200_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">5700🪙=2000ج</div>
+                <div class="item-info">5700🪙= <span>2000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_5700_عملة_بيس_2024_ب_2000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_5700_عملة_بيس_2024_ب_2000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">12800🪙=4000ج</div>
+                <div class="item-info">12800🪙= <span>4000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_12800_عملة_بيس_2024_ب_4000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_12800_عملة_بيس_2024_ب_4000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="note">الشحن بيتم عن طريق كونامي وبياخد وقت</div>
@@ -445,58 +610,89 @@
         <div class="price-section">
             <h2>اسعار عملات تيك توك</h2>
             <div class="price-item">
-                <div class="item-info">350🪙 = 200ج</div>
+                <div class="item-info">350🪙 = <span>200</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_350_عملة_تيك_توك_ب_200_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_350_عملة_تيك_توك_ب_200_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">700🪙 = 400ج</div>
+                <div class="item-info">700🪙 = <span>400</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_700_عملة_تيك_توك_ب_400_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_700_عملة_تيك_توك_ب_400_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">1400🪙 = 800ج</div>
+                <div class="item-info">1400🪙 = <span>800</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_1400_عملة_تيك_توك_ب_800_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_1400_عملة_تيك_توك_ب_800_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">2800🪙=1600ج</div>
+                <div class="item-info">2800🪙= <span>1600</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_2800_عملة_تيك_توك_ب_1600_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_2800_عملة_تيك_توك_ب_1600_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">3500🪙=2000ج</div>
+                <div class="item-info">3500🪙= <span>2000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_3500_عملة_تيك_توك_ب_2000_ج" class="whatsapp-btn">اطلب الآن</a>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_3500_عملة_تيك_توك_ب_2000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
                 </div>
             </div>
             <div class="price-item">
-                <div class="item-info">7000🪙=4000ج</div>
+                <div class="item-info">7000🪙= <span>4000</span>ج</div>
                 <div class="item-action">
-                    <a href="https://wa.me/201102338477?text=أريد_طلب_7000_عملة_تيك_توك_ب_4000_ج" class="whatsapp-btn">اطلب الآن</a>
-                </div>
-            </div>
+                    <a href="https://wa.me/201102338477?text=أريد_طلب_7000_عملة_تيك_توك_ب_4000_ج" class="btn btn-primary btn-sm">اطلب الآن</a>
+                            </div>
             <div class="note">الشحن بياخد وقت</div>
         </div>
 
-        <div style="text-align: center; margin: 30px 0;">
-            <a href="https://wa.me/201102338477" class="whatsapp-btn">تواصل معنا عبر واتساب</a>
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="https://wa.me/201102338477" class="btn btn-whatsapp" style="padding: 15px 30px; font-size: 1.1rem;">
+                تواصل معنا عبر واتساب
+            </a>
         </div>
 
         <footer>
-            <p>ROKA SHOP - جميع الحقوق محفوظة &copy; 2023</p>
+            <p>ROKA SHOP - جميع الحقوق محفوظة &copy; <span id="year"></span></p>
         </footer>
     </div>
 
     <script>
-        // يمكنك إضافة أي وظائف جافاسكريبت هنا إذا لزم الأمر
+        // إضافة السنة الحالية في الفوتر
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // تأثيرات إضافية عند التمرير
         document.addEventListener('DOMContentLoaded', function() {
-            // أي كود تريد تنفيذه عند تحميل الصفحة
+            const priceSections = document.querySelectorAll('.price-section');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            priceSections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // إضافة تأثير عند الضغط على الأزرار
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mousedown', () => {
+                    button.style.transform = 'scale(0.95)';
+                });
+                button.addEventListener('mouseup', () => {
+                    button.style.transform = 'scale(1)';
+                });
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'scale(1)';
+                });
+            });
         });
     </script>
 </body>
-  </html>
+                                                             </html>
